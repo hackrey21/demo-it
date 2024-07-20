@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas</title>
+    <link rel="stylesheet" href="../css/notas.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button id="addNoteButton"><span>+</span></button>
+        </header>
+        <main>
+            <div id="notesContainer">
+                <!-- Las notas se añadirán aquí -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Pop-up para añadir una nueva nota -->
+    <div id="addNotePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closeAddNotePopup">&times;</span>
+            <h2>Nueva Nota</h2>
+            <input type="text" id="noteTitle" placeholder="Título">
+            <textarea id="noteContent" placeholder="Contenido"></textarea>
+            <input type="file" id="noteImage" accept="image/*">
+            <button id="saveNoteButton">Guardar</button>
+        </div>
+    </div>
+
+    <!-- Pop-up para ver una nota -->
+    <div id="viewNotePopup" class="popup">
+        <div class="popup-content">
+            <span class="close" id="closeViewNotePopup">&times;</span>
+            <h2 id="viewNoteTitle"></h2>
+            <p id="viewNoteContent"></p>
+            <div><img id="viewNoteImage" src="" alt="" srcset=""></div>
+        </div>
+    </div>
+
+    <script src="../js/fire-store.js" type="module"></script>
+    <script src="../js/notas.js" type="module"></script>
+</body>
+</html>

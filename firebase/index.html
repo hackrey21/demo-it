@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/view.css">
+    <link rel="icon" href="image/F.png" sizes="192x192" />
+    <title>ASSETS</title>
+</head>
+
+<body>
+    <header>
+        <div class="linea-verde"></div>
+        <div class="contenedor-imagen">
+            <img src="img/fisher.jpg" alt="Imagen" />
+        </div>
+    </header>
+    <main class="mycards" style="align-items: start;">
+            <div class="card">
+                <a href="">
+                    <div class="face front">
+                        <img src="" alt="" />
+                        <div class="info">
+                            <h2 style="font-size: 1.5rem;">Inventario</h2>
+                        </div>
+                    </div>
+                    <div class='face back'>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="">
+                    <div class="face front">
+                        <img src="" alt="" />
+                        <div class="info">
+                            <h2 style="font-size: 1.5rem;">Scrap</h2>
+                        </div>
+                    </div>
+                    <div class='face back'>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="">
+                    <div class="face front">
+                        <img src="img/notas.png" alt="" />
+                        <div class="info">
+                            <h2 style="font-size: 1.5rem;">Apuntes</h2>
+                        </div>
+                    </div>
+                    <div class='face back'>
+                    </div>
+                </a>
+            </div>
+
+    </main>
+
+    <div class="popup-container" id="popup">
+        <div class="popup-content">
+            <form action="index.php" method="post" enctype="multipart/form-data">
+                <h2>Agregar area</h2>
+                <div class="popup-buttons">
+                    <div class="prp">
+                        <label for="">Nombre del area</label>
+                        <input type="text" name="name" id="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="prp">
+                        <label for="">Imagen del area</label>
+                        <input type="file" name="image" id="imagen" accept="image/*" onchange="previewImage(event)" required>
+                        <img id="preview" src="" alt="Vista previa de la imagen">
+                    </div>
+                </div>
+                <div class="popup-buttons prp" style="display: block">
+                    <button onclick="hidePopup()">Cancelar</button>
+                    <button type="submit">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="overlay" id="overlay"></div>
+
+    <footer>
+        <p>© <span id="year"></span> Fisher & Paykel.</p>
+    </footer>
+    <script>
+        var tsu = document.querySelector("#targetOne");
+        var ing = document.querySelector("#targetThree");
+
+        tsu.addEventListener("click", () => {
+            window.location = "home_user";
+        });
+        ing.addEventListener("click", () => {
+            window.location = "home_user";
+        });
+    </script>
+    <!--PARTE DEL MAESTRO-->
+    <script>
+        var tsu = document.querySelector("#adminTagone");
+        var ing = document.querySelector("#adminTagonethree");
+
+        tsu.addEventListener("click", () => {
+            window.location = "home_admin";
+        });
+        ing.addEventListener("click", () => {
+            window.location = "home_admin";
+        });
+    </script>
+    <script defer>
+        function reemplazarImagenesFaltantes() {
+            const imagenesSinSrc = document.querySelectorAll('img:not([src])');
+            const imagenPredeterminada = 'image/progress.png';
+            imagenesSinSrc.forEach(function(img) {
+                img.src = imagenPredeterminada;
+            });
+        }
+        document.addEventListener('DOMContentLoaded', reemplazarImagenesFaltantes);
+    </script>
+    <!-- POP UP SCRIPT -->
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <script src="js/database.js"></script>
+
+
+</body>
+
+</html>
